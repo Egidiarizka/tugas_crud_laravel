@@ -14,10 +14,8 @@ class JawabanController extends Controller
     		return redirect()->route('pertanyaan.index')->with('error', 'Pertanyaan tidak ditemukan');
     	}
 
-    	$jawaban = DB::table('table_jawaban')->where('pertanyaan_id', $pertanyaan->id)->first();
     	return view('jawaban', [
-    		'pertanyaan' => $pertanyaan,
-    		'jawaban' => $jawaban
+    		'pertanyaan' => $pertanyaan
     	]);
     }
 
@@ -29,9 +27,8 @@ class JawabanController extends Controller
     		return redirect()->route('pertanyaan.index')->with('error', 'Pertanyaan tidak ditemukan');
     	}
 
-        DB::table('table_jawaban')->updateOrInsert(
-        	['pertanyaan_id' => $pertanyaan->id],
-        	['isi' => $request->jawaban]
+        DB::table('table_jawaban')->insert(
+        	['pertanyaan_id' => $pertanyaan->id,  'isi' => $request->jawaban]
         );
 
         return redirect()->route('pertanyaan.index')->with('success', 'Jawaban berhasil disimpan');

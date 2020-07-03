@@ -15,7 +15,7 @@ class CreateTableJawaban extends Migration
     {
         Schema::create('table_jawaban', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pertanyaan_id')->constrained('table_pertanyaan');
+            $table->foreignId('pertanyaan_id')->constrained('table_pertanyaan')->onDelete('cascade');
             $table->string('isi');
             $table->timestamp('tanggal_dibuat')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('tanggal_diperbaruhi')->default(\DB::raw('CURRENT_TIMESTAMP'));

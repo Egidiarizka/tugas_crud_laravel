@@ -14,7 +14,7 @@
       <br>
       <div class="form-group">
         <label for="isi">Jawaban</label>
-        <input type="text" name="jawaban" id="jawaban" class="form-control" value="{{ is_null($jawaban) ? '' : $jawaban->isi }}">
+        <input type="text" name="jawaban" id="jawaban" class="form-control">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>

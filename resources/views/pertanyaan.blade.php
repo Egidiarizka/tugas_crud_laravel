@@ -42,7 +42,14 @@
                 <td>{{ $soal->tanggal_dibuat }}</td>
                 <td>{{ $soal->tanggal_diperbaruhi }}</td>
                 <td>
-                  <a href="{{ route('jawaban.index', ['pertanyaan_id' => $soal->id]) }}" class="btn btn-primary">Jawab Pertanyaan</a>
+                  <a href="{{ route('jawaban.index', ['pertanyaan_id' => $soal->id]) }}" class="btn btn-primary">Jawab</a>
+                  <a href="{{ route('pertanyaan.show', ['id' => $soal->id]) }}" class="btn btn-info">Lihat</a>
+                  <a href="{{ route('pertanyaan.edit', ['id' => $soal->id]) }}" class="btn btn-warning">Edit</a>
+                  <form action="{{ route('pertanyaan.delete', ['id' => $soal->id]) }}" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    {{ csrf_field() }}
+                    <button class="btn btn-danger" type="submit">Hapus</button>
+                  </form>
                 </td>
               </tr>
             @endforeach
